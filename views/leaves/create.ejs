@@ -1,0 +1,21 @@
+
+<h1>Apply for Leave</h1>
+<form action="/leaves" method="POST">
+    <label for="employee">Employee:</label>
+    <select class="border-[1px] p-1.5 border-black rounded-md" id="employee" name="employee" required>
+        <% employees.forEach(employee => { %>
+            <option value="<%= employee._id %>"><%= employee.firstName %> <%= employee.lastName %></option>
+        <% }) %>
+    </select>
+
+    <label for="startDate">Start Date:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="date" id="startDate" name="startDate" required>
+
+    <label for="endDate">End Date:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="date" id="endDate" name="endDate" required>
+
+    <label for="reason">Reason:</label>
+    <textarea class="border-[1px] p-1.5 border-black rounded-md" id="reason" name="reason" required></textarea>
+
+    <button class="bg-[#333333] mt-3 p-3 rounded-md text-white" type="submit">Apply for Leave</button>
+</form>

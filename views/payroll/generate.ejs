@@ -1,0 +1,22 @@
+<h1>Generate Payroll</h1>
+<form action="/payroll/generate" method="POST">
+    <label for="employee">Employee:</label>
+    <select class="border-[1px] p-1.5 border-black rounded-md" id="employee" name="employee" required>
+        <% employees.forEach(employee => { %>
+            <option value="<%= employee._id %>"><%= employee.firstName %> <%= employee.lastName %></option>
+        <% }) %>
+    </select>
+
+    <label for="month">Month:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="number" id="month" name="month" min="1" max="12" required>
+
+    <label for="year">Year:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="number" id="year" name="year" min="2000" max="2100" required>
+
+    <button class="bg-[#333333] mt-3 p-3 rounded-md text-white" type="submit">Generate Payroll</button>
+</form>
+
+
+
+
+

@@ -1,0 +1,32 @@
+
+<script src="https://cdn.tailwindcss.com"></script>
+<h1 class="p-2 text-2xl">Employees</h1>
+<a class=" text-blue-600 p-2" href="/employees/create">Add New Employee</a>
+<table class="mt-6">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% employees.forEach(employee => { %>
+            <tr>
+                <td><%= employee.firstName %> <%= employee.lastName %></td>
+                <td><%= employee.position %></td>
+                <td><%= employee.department %></td>
+                <td>
+                    <div class="flex items-center justify-center gap-10">
+                    <a class="text-blue-600 mb-2" href="/employees/<%= employee._id %>">View</a>
+                    <a class="text-blue-600 mb-2" href="/employees/<%= employee._id %>/edit">Edit</a>
+                </div>
+                    <form action="/employees/<%= employee._id %>/delete" method="POST" style="display:inline;">
+                        <button class="bg-[#333333] text-white p-2 rounded-md" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

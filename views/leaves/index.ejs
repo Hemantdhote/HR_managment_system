@@ -1,0 +1,37 @@
+
+<script src="https://cdn.tailwindcss.com"></script>
+<h1 class="p-2 text-2xl">Leave Records</h1>
+<a class=" text-blue-600 p-2" href="/leaves/create">Apply for Leave</a>
+
+<% if (leaves && leaves.length > 0) { %>
+    <table class="mt-6">
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Reason</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% leaves.forEach(leave => { %>
+                <tr>
+                    <td>
+                        <% if (leave.employee) { %> 
+                            <%= leave.employee.firstName %> <%= leave.employee.lastName %>
+                        <% } else { %>
+                            <em>No Employee Found</em>
+                        <% } %>
+                    </td>
+                    <td><%= leave.startDate.toDateString() %></td>
+                    <td><%= leave.endDate.toDateString() %></td>
+                    <td><%= leave.reason %></td>
+                    <td><%= leave.status %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+<% } else { %>
+    <p>No leave records available.</p>
+<% } %>

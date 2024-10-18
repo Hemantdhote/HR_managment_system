@@ -1,0 +1,21 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<h1 class="p-2 text-2xl">Record Overtime</h1>
+<form action="/overtime" method="POST">
+    <label for="employee">Employee:</label>
+    <select class="border-[1px] p-1.5 border-black rounded-md" id="employee" name="employee" required>
+        <% employees.forEach(employee => { %>
+            <option value="<%= employee._id %>"><%= employee.firstName %> <%= employee.lastName %></option>
+        <% }) %>
+    </select>
+
+    <label for="date">Date:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="date" id="date" name="date" required>
+
+    <label for="hours">Hours:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="number" id="hours" name="hours" step="0.5" required>
+
+    <label for="rate">Hourly Rate:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="number" id="rate" name="rate" step="0.01" required>
+
+    <button class="bg-[#333333] mt-3 p-3 rounded-md text-white" type="submit">Record Overtime</button>
+</form>

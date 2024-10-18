@@ -1,0 +1,40 @@
+
+<script src="https://cdn.tailwindcss.com"></script>
+<h1 class="p-2 text-2xl" >Payroll Records</h1>
+<a  class=" text-blue-600 p-2" href="/payroll/generate">Generate Payroll</a>
+<table class="mt-6">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Basic Salary</th>
+            <th>Deductions</th>
+            <th>Net Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (payrolls && payrolls.length > 0) { %>
+            <% payrolls.forEach(payroll => { %>
+                <tr>
+                    <td>
+                        <% if (payroll.employee) { %> 
+                            <%= payroll.employee.firstName %> <%= payroll.employee.lastName %>
+                        <% } else { %>
+                            <em>No Employee Found</em> 
+                        <% } %>
+                    </td>
+                    <td><%= payroll.month %></td>
+                    <td><%= payroll.year %></td>
+                    <td>$<%= payroll.basicSalary.toFixed(2) %></td>
+                    <td>$<%= payroll.deductions.toFixed(2) %></td>
+                    <td>$<%= payroll.netSalary.toFixed(2) %></td>
+                </tr>
+            <% }) %>
+        <% } else { %>
+            <tr>
+                <td colspan="6"><p>No payroll records available.</p></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>

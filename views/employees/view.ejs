@@ -1,0 +1,13 @@
+
+<h1>Employee Details</h1>
+<p><strong>Name:</strong> <%= employee.firstName %> <%= employee.lastName %></p>
+<p><strong>Email:</strong> <%= employee.email %></p>
+<p><strong>Position:</strong> <%= employee.position %></p>
+<p><strong>Department:</strong> <%= employee.department %></p>
+<p><strong>Hire Date:</strong> <%= employee.hireDate.toDateString() %></p>
+<p><strong>Salary:</strong> $<%= employee.salary %></p>
+
+<a href="/employees/<%= employee._id %>/edit">Edit</a>
+<form action="/employees/<%= employee._id %>/delete" method="POST" style="display:inline;">
+    <button type="submit">Delete</button>
+</form>

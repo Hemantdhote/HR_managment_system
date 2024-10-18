@@ -1,0 +1,31 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<h1 class="p-2 text-2xl">Attendance Records</h1>
+<a class="text-blue-600 p-2" href="/attendance/create">Add Attendance Record</a>
+<table class="mt-6">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% attendances.forEach(attendance => { %>
+            <tr>
+                <td>
+                    <% if (attendance.employee) { %>
+                        <%= attendance.employee.firstName %> <%= attendance.employee.lastName %>
+                    <% } else { %>
+                        Unknown Employee 
+                    <% } %>
+                </td>
+                <td><%= attendance.date.toDateString() %></td>
+                <td><%= attendance.checkIn %></td>
+                <td><%= attendance.checkOut ? attendance.checkOut : 'Not checked out' %></td>
+                <td><%= attendance.status %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

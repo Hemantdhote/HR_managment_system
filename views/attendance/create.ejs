@@ -1,0 +1,28 @@
+
+<h1>Add Attendance Record</h1>
+<form action="/attendance" method="POST">
+    <label for="employee">Employee:</label>
+    <select class="border-[1px] p-1.5 border-black rounded-md"  id="employee" name="employee" required>
+        <% employees.forEach(employee => { %>
+            <option value="<%= employee._id %>"><%= employee.firstName %> <%= employee.lastName %></option>
+        <% }) %>
+    </select>
+
+    <label for="date">Date:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md"  type="date" id="date" name="date" required>
+
+    <label for="checkIn">Check In:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md"  type="time" id="checkIn" name="checkIn" required>
+
+    <label for="checkOut">Check Out:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md"  type="time" id="checkOut" name="checkOut">
+
+    <label  for="status">Status:</label>
+    <select class="border-[1px] p-1.5 border-black rounded-md" id="status" name="status" required>
+        <option value="present">Present</option>
+        <option value="absent">Absent</option>
+        <option value="half-day">Half Day</option>
+    </select>
+
+    <button class="bg-[#333333] mt-3 p-3 rounded-md text-white" type="submit">Add Attendance Record</button>
+</form>

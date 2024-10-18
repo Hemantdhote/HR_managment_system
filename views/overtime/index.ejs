@@ -1,0 +1,46 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<h1 class="p-2 text-2xl">Overtime Records</h1>
+<a class="text-blue-600 p-2" href="/overtime/create">Record New Overtime</a>
+<table class="mt-6">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Hours</th>
+            <th>Rate</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% overtimes.forEach(overtime => { %>
+            <tr>
+                <td>
+                    <% if (overtime.employee && overtime.employee.firstName && overtime.employee.lastName) { %>
+                        <%= overtime.employee.firstName %> <%= overtime.employee.lastName %>
+                    <% } else { %>
+                        No Employee Assigned
+                    <% } %>
+                </td>
+                <td><%= overtime.date ? overtime.date.toDateString() : 'N/A' %></td>
+                <td><%= overtime.hours || 'N/A' %></td>
+                <td>$<%= overtime.rate ? overtime.rate.toFixed(2) : 'N/A' %></td>
+                <td>$<%= (overtime.hours && overtime.rate) ? (overtime.hours * overtime.rate).toFixed(2) : 'N/A' %></td>
+                <td><%= overtime.status || 'N/A' %></td>
+                <td>
+                    <% if (overtime.status === 'pending') { %>
+                        <form action="/overtime/<%= overtime._id %>/update-status" method="POST" class="inline">
+                            <input type="hidden" name="status" value="approved">
+                            <button type="submit" class="text-green-600">Approve</button>
+                        </form>
+                        <form action="/overtime/<%= overtime._id %>/update-status" method="POST" class="inline">
+                            <input type="hidden" name="status" value="rejected">
+                            <button type="submit" class="text-red-600">Reject</button>
+                        </form>
+                    <% } %>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

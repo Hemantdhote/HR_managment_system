@@ -1,0 +1,23 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<h1>Add New Employee</h1>
+<form action="/employees" method="POST">
+    <label for="firstName">First Name:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="text" id="firstName" name="firstName" required>
+
+    <label for="lastName">Last Name:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="text" id="lastName" name="lastName" required>
+
+    <label for="email">Email:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="email" id="email" name="email" required>
+
+    <label for="position">Position:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="text" id="position" name="position" required>
+
+    <label for="department">Department:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="text" id="department" name="department" required>
+
+    <label for="salary">Salary:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="number" id="salary" name="salary" required>
+
+    <button class="bg-[#333333] mt-3 p-3 rounded-md text-white" type="submit">Add Employee</button>
+</form>

@@ -1,0 +1,127 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<h1 class="p-2 text-2xl">Employee Documents</h1>
+<a class="text-blue-600 p-2" href="/documents/create">Upload New Document</a>
+<table class="mt-6">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Title</th>
+            <th>File Type</th>
+            <th>Upload Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% documents.forEach(document => { %>
+            <tr>
+                <td>
+                    <% if (document.employee && document.employee.firstName && document.employee.lastName) { %>
+                        <%= document.employee.firstName %> <%= document.employee.lastName %>
+                    <% } else { %>
+                        No Employee Assigned
+                    <% } %>
+                </td>
+                <td><%= document.title %></td>
+                <td><%= document.fileType %></td>
+                <td><%= document.uploadDate.toDateString() %></td>
+                <td>
+                    <a href="/documents/<%= document._id %>/download">Download</a>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script src="https://cdn.tailwindcss.com"></script>
+<h1 class="p-2 text-2xl">Employee Documents</h1>
+<a class="text-blue-600 p-2" href="/documents/create">Upload New Document</a>
+<table class="mt-6">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Title</th>
+            <th>File Type</th>
+            <th>Upload Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% documents.forEach(document => { %>
+            <tr>
+                <td>
+                    <% if (document.employee) { %>
+                        <%= document.employee.firstName %> <%= document.employee.lastName %>
+                    <% } else { %>
+                        No Employee Assigned
+                    <% } %>
+                </td>
+                <td><%= document.title %></td>
+                <td><%= document.fileType %></td>
+                <td><%= document.uploadDate.toDateString() %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table> -->
+
+
+
+
+
+
+
+
+
+
+<!-- <script src="https://cdn.tailwindcss.com"></script>
+<h1 class="p-2 text-2xl">Employee Documents</h1>
+<a class="text-blue-600 p-2" href="/documents/create">Upload New Document</a>
+<table class="mt-6">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Title</th>
+            <th>File Type</th>
+            <th>Upload Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% documents.forEach(document => { %>
+            <tr>
+                <td>
+                    <% if (document.employee && document.employee.firstName && document.employee.lastName) { %>
+                        <%= document.employee.firstName %> <%= document.employee.lastName %>
+                    <% } else { %>
+                        No Employee Assigned
+                    <% } %>
+                </td>
+                <td><%= document.title || 'N/A' %></td>
+                <td><%= document.fileType || 'N/A' %></td>
+                <td><%= document.uploadDate ? document.uploadDate.toDateString() : 'N/A' %></td>
+                <td>
+                    <a href="/documents/<%= document._id %>/download">Download</a>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table> -->

@@ -1,0 +1,21 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<h1 class="p-2 text-2xl">Upload New Document</h1>
+<form action="/documents" method="POST" enctype="multipart/form-data">
+    <label for="employee">Employee:</label>
+    <select class="border-[1px] p-1.5 border-black rounded-md" id="employee" name="employee" required>
+        <% employees.forEach(employee => { %>
+            <option value="<%= employee._id %>"><%= employee.firstName %> <%= employee.lastName %></option>
+        <% }) %>
+    </select>
+
+    <label for="title">Document Title:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="text" id="title" name="title" required>
+
+    <label for="fileType">File Type:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="text" id="fileType" name="fileType" required>
+
+    <label for="file">File:</label>
+    <input class="border-[1px] p-1.5 border-black rounded-md" type="file" id="file" name="file" required>
+
+    <button class="bg-[#333333] mt-3 p-3 rounded-md text-white" type="submit">Upload Document</button>
+</form>
